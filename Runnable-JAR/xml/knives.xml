@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<knives xsi:noNamespaceSchemaLocation="./schema.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<knife name="tati">
+		<knifeType>saber</knifeType>
+		<handy>2</handy>
+		<origin>New York</origin>
+		<visual>
+			<blade length="710" width="24" metal="steel"/>
+			<handle>
+				<wood type="oak"></wood>
+			</handle>
+			<dol>false</dol>
+		</visual>
+		<collection>true</collection>
+	</knife>
+	<knife name="kerambit">
+		<knifeType>knife</knifeType>
+		<handy>1</handy>
+		<origin>Malaysia</origin>
+		<visual>
+			<blade length="90" width="20" metal="copper"></blade>
+			<handle>
+				<metal/>
+			</handle>
+			<dol>false</dol>
+		</visual>
+		<collection>false</collection>
+	</knife>
+</knives>
