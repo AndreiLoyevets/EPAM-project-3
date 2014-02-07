@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xsd:element name="knives">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="knife" type="knifeDesc" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- Knife length must be >= 10cm, width >= 10mm -->
+	<xsd:simpleType name="bladeSize">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<!-- Metal types -->
+	<xsd:simpleType name="metalType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="steel" />
+			<xsd:enumeration value="iron" />
+			<xsd:enumeration value="copper" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<!-- Wood types -->
+	<xsd:simpleType name="woodType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="oak" />
+			<xsd:enumeration value="maple" />
+			<xsd:enumeration value="beech" />
+			<xsd:enumeration value="pine" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="knifeDesc">
+		<xsd:sequence>
+			<xsd:element name="knifeType">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="knife" />
+						<xsd:enumeration value="dagger" />
+						<xsd:enumeration value="saber" />
+						<xsd:enumeration value="sword" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="handy">
+				<xsd:simpleType>
+					<!-- You can keep the knife with 1 hand or both hands -->
+					<xsd:restriction base="xsd:integer">
+						<xsd:minInclusive value="1" />
+						<xsd:maxInclusive value="2" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="origin" type="xsd:string" />
+			<xsd:element name="visual">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="blade">
+							<xsd:complexType>
+								<xsd:attribute name="length" type="bladeSize" use="required" />
+								<xsd:attribute name="width" type="bladeSize" use="required" />
+								<xsd:attribute name="metal" type="metalType" use="required" />
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="handle">
+							<xsd:complexType>
+								<xsd:choice>
+									<xsd:element name="wood">
+										<xsd:complexType>
+											<xsd:attribute name="type" type="woodType" use="required">
+											</xsd:attribute>
+										</xsd:complexType>
+									</xsd:element>
+									<xsd:element name="metal" />
+									<xsd:element name="plastic" />
+								</xsd:choice>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="dol" type="xsd:boolean" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="collection" type="xsd:boolean" />
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:ID" />
+	</xsd:complexType>
+</xsd:schema>
+
+
+
